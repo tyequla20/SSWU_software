@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+//DrawerLayout 은 평소에는 화면의 한쪽에 숨겨저 있다가 사용자가 액션을 취하면
+    화면에 나타날 수 있도록 하는 레이아웃
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:id="@+id/view_toolbar"
+            android:background="@android:color/black"
+            android:layout_below="@+id/toolbar"/>
+//view는 toolbar 밑에 검은색 줄을 표시하는데 사용된다.
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbar_title"
+                android:text="설정"
+                android:layout_gravity="center"/>
+            //toolbar 안에 속한 Textview 는 toolbar의 제목을 설정하는데 사용된다.
+        </androidx.appcompat.widget.Toolbar>
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/navi_menu" />
+    //NavigationView 는 실제로 숨겨져 있다가 나오는 뷰 가 자체를 말한다
+    //디자인을 위해 수정해야 하는 부분이 된다
+</androidx.drawerlayout.widget.DrawerLayout>
