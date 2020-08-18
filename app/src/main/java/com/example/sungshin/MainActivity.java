@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     //private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawerLayout;
     private Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(true);//자동의로 Toolbar 왼쪽에 버튼이 생성된다
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_manage);
-    //버튼의 이미지를 생성 할 수 있다.
+        //actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_manage);
+        //버튼의 이미지를 생성 할 수 있다.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         /*
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (id == R.id.planAdd) {
                     Toast.makeText(context, title + ":일정추가 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
-                } else if(id==R.id.planCheck){
+                } else if (id == R.id.planCheck) {
                     Toast.makeText(context, title + ":일정확인 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.lectureEnroll) {
                     Toast.makeText(context, title + ":강의 등록 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
@@ -80,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+    // Passing each menu ID as a set of Ids because each
+    // menu should be considered as top level destinations.
     /*
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
@@ -108,8 +110,19 @@ public class MainActivity extends AppCompatActivity {
 }
 */
     //@Override
-public  boolean onOptionItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
+    public boolean onOptionItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+/*
+switch (item.getItemId()) {
         case android.R.id.home: {
             finish();
             //mDrawerLayout.openDrawer(GravityCompat.START);
@@ -117,6 +130,4 @@ public  boolean onOptionItemSelected(MenuItem item) {
         }
     }
     return super.onOptionsItemSelected(item);
-    }
-}
-
+}*/

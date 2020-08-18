@@ -19,7 +19,7 @@
             <View
                 android:id="@+id/view_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_below="@+id/toolbar"
                 android:background="@android:color/black" />
             //view는 toolbar 밑에 검은색 줄을 표시하는데 사용된다.
